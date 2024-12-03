@@ -67,7 +67,7 @@ This application uses the MVVM UI architecture with modular approach using DI Co
 
 ### Navigator Panel
 <p align="center"> 
-<img src="https://github.com/user-attachments/assets/df56c829-da49-465a-8f94-9de58cccb329" width="400" height="500">
+<img src="https://github.com/user-attachments/assets/df56c829-da49-465a-8f94-9de58cccb329" width="350" height="500">
 </p>
 
 ### Graph View
