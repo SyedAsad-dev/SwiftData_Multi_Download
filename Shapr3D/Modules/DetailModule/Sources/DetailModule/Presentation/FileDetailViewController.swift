@@ -158,7 +158,7 @@ extension FileDetailViewController {
             container.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16), // Use safeArea for bottom
         ])
 
-//        
+//
         setupTitleAndImage(in: container)
         setupTableView(in: container)
         adjustTableViewHeight()
@@ -332,7 +332,3 @@ extension FileDetailViewController: PresentableDetailView {
     
 }
 
-extension FileDetailViewController: UIPopoverPresentationControllerDelegate {
-    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        .none
-    }}

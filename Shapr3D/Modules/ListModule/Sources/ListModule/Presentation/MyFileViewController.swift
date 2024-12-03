@@ -169,3 +169,19 @@ public func didUpdateProgress(for model: Any) {
     }
 }
 }
+
+
+extension MyFileViewController: UIPopoverPresentationControllerDelegate {
+   
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    public func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+       
+    }
+
+    public func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
+}

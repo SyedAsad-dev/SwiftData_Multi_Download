@@ -33,35 +33,26 @@ class AppNavigation: NavigationService, ExternalNavigationService {
             detailNavigationService.passData(model: model, delegate: delegate)
             
             let popoverVC = detailNavigationService.toPresent()
-            popoverVC.modalPresentationStyle = .popover
-            
-                // Configure the popover presentation controller
-                if let popoverController = popoverVC.popoverPresentationController {
-                    // Use a specific source view (e.g., button, cell, or self.view)
-                    if let validSourceView = view as? UIView { // Ensure the view is valid
-                        popoverController.sourceView = validSourceView
-                        popoverController.sourceRect = validSourceView.bounds
-                        popoverController.permittedArrowDirections = .up
-                    } else {
-                        return // Exit early to prevent crash
-                    }
+        popoverVC.modalPresentationStyle = .popover
+        if popoverVC.popoverPresentationController?.delegate == nil {
+            if let popoverController = popoverVC.popoverPresentationController {
+                if let rootViewController = delegate as? UIViewController {
                     
-                } else {
-                    return // Exit early to prevent crash
-                }
-            
-            // Ensure `navigationController` and `viewControllers.first` are valid
-            if let rootViewController = delegate as? UIViewController {
-                if navigationController.viewControllers.contains(popoverVC)  {
-                    popoverVC.dismiss(animated: true) {
-                        rootViewController.present(popoverVC, animated: true, completion: nil)
+                    if let rootViewControllerDelegate  = delegate as? UIPopoverPresentationControllerDelegate {
+                        if let validSourceView = view as? UIView {
+                            
+                            popoverController.delegate = rootViewControllerDelegate
+                            
+                            popoverController.sourceView = validSourceView // Anchor popover to a specific view
+                            
+                            popoverController.sourceRect = validSourceView.bounds// Anchor point// Anchor point
+                            popoverController.permittedArrowDirections = .any
+                        }
                     }
-                } else {
                     rootViewController.present(popoverVC, animated: true, completion: nil)
                 }
-                
-            } else {
             }
+        }
 
     }
     

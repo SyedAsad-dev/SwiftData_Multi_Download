@@ -35,7 +35,7 @@ public final class MyFileViewModel: MyFileViewModelType {
     public let retrieveAllImportedFileUseCase: RetriveAllImportedFileUseCaseProtocol
     
     let thumbnailPhoto = UIImage(named: "thumbnailPhoto")
-    
+    let destinationDirectory = FileManager.default.temporaryDirectory.appendingPathComponent("ConvertedFiles")
     // MARK: - Initializer
     /// Initializes the ViewModel with required use cases.
     public init(
@@ -119,8 +119,22 @@ extension MyFileViewModel {
     ///   - newFileName: The desired name for the file.
     /// - Returns: The full path for the new file.
     private func generateTargetURL(originalURL: URL, newFileName: String) -> String {
-        let directoryPath = originalURL.deletingLastPathComponent()
-        let newURL = directoryPath.appendingPathComponent(newFileName)
-        return newURL.path
+        do {
+       
+        // Ensure the destination directory exists
+            try FileManager.default.createDirectory(at: destinationDirectory, withIntermediateDirectories: true, attributes: nil)
+
+        // Define the destination file path
+        let destinationFilePath = destinationDirectory.appendingPathComponent(newFileName)
+
+        return destinationFilePath.path
+            
+        } catch {
+            let directoryPath = originalURL.deletingLastPathComponent()
+            
+            let newURL = directoryPath.appendingPathComponent(newFileName)
+            print("An error occurred: \(error.localizedDescription)")
+            return newURL.path()
+        }
     }
 }
