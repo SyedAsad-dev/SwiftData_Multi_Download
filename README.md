@@ -96,7 +96,7 @@ Memory usage:
 
 ### iPad Pro 13 inch (M4)
 <p align="center"> 
-<img src="https://github.com/user-attachments/assets/72ced661-1f9f-41e2-9571-040774677e57" width="350" height="560">
+<img src="https://github.com/user-attachments/assets/72ced661-1f9f-41e2-9571-040774677e57" width="560" height="350">
 
-<img src="https://github.com/user-attachments/assets/d7cf9c44-d8ab-42fa-b633-76eabfecd93d" width="350" height="560">
+<img src="https://github.com/user-attachments/assets/d7cf9c44-d8ab-42fa-b633-76eabfecd93d" width="560" height="350">
 </p>
